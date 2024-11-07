@@ -20,4 +20,8 @@ public class Funcionario {
     private String contato;
     private String email;
     private Date dataNascimento;
+
+    private Perfil perfil;
+
+    private Especialidade especialidade;
 }
