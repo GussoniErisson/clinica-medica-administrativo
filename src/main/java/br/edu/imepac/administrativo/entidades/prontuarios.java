@@ -1,3 +1,5 @@
+package br.edu.imepac.administrativo.entidades;
+
 public class prontuarios {
     private int id;
     private String receituario;
@@ -48,7 +50,7 @@ public class prontuarios {
 
     @Override
     public String toString() {
-        return "prontuarios{" +
+        return "br.edu.imepac.administrativo.entidades.prontuarios{" +
                 "id=" + id +
                 ", receituario='" + receituario + '\'' +
                 ", exames='" + exames + '\'' +
