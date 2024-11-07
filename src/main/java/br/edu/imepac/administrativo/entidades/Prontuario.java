@@ -1,13 +1,13 @@
 package br.edu.imepac.administrativo.entidades;
 
-public class prontuarios {
+public class Prontuario {
     private int id;
     private String receituario;
     private String exames;
     private String observacoes;
 
 
-    public prontuarios(int id, String receituario, String exames, String observacoes) {
+    public Prontuario(int id, String receituario, String exames, String observacoes) {
         this.id = id;
         this.receituario = receituario;
         this.exames = exames;
