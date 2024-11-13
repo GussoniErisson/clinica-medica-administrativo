@@ -1,7 +1,15 @@
 package br.edu.imepac.administrativo.entidades;
 
+import lombok.*;
 import java.util.Date;
 
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class Funcionario {
     private int id;
     private String usuario;
@@ -22,6 +30,5 @@ public class Funcionario {
     private Date dataNascimento;
 
     private Perfil perfil;
-
     private Especialidade especialidade;
 }
