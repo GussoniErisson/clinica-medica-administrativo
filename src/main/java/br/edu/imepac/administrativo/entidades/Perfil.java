@@ -1,6 +1,20 @@
 package br.edu.imepac.administrativo.entidades;
 
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import lombok.NoArgsConstructor;
+
+
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
+
 public class Perfil {
+
 
     private int id;
     private String nome;
