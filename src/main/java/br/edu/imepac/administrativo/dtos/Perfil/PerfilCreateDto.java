@@ -1,6 +1,14 @@
 package br.edu.imepac.administrativo.dtos.Perfil;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class PerfilCreateDto {
+
     private String nome;
     private boolean cadastrarFuncionario;
     private boolean lerFuncionario;
