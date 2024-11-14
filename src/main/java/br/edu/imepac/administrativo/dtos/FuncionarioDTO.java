@@ -1,11 +1,21 @@
-package br.edu.imepac.administrativo.entidades;
+package br.edu.imepac.administrativo.dtos;
 
+import br.edu.imepac.administrativo.entidades.Especialidade;
+import br.edu.imepac.administrativo.entidades.Perfil;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
+
 @Data
-public class Funcionario {
-    private long id;
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class FuncionarioDTO {
+
+    private int id;
     private String usuario;
     private int senha;
     private int idPaciente;
@@ -27,3 +37,5 @@ public class Funcionario {
 
     private Especialidade especialidade;
 }
+
+
