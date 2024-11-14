@@ -1,11 +1,16 @@
 package br.edu.imepac.administrativo.entidades;
 
-import jakarta.persistence.Id;
-
+import lombok.*;
 import java.time.LocalDateTime;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+
 public class consulta {
-    private int id;
+
+
+    private long id;
     private LocalDateTime dataHorario;
 
     private String sintomas;
