@@ -1,24 +1,20 @@
-package br.edu.imepac.administrativo.entidades;
+package br.edu.imepac.administrativo.dtos;
 
-<<<<<<< HEAD
-import lombok.*;
-import java.util.Date;
 
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
-=======
+import br.edu.imepac.administrativo.entidades.Especialidade;
+import br.edu.imepac.administrativo.entidades.Perfil;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.sql.Date;
+
 @Data
->>>>>>> origin/servico-matheus
-public class Funcionario {
-    private long id;
+@AllArgsConstructor
+@NoArgsConstructor
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class CreatedFuncionarioDTO {
     private String usuario;
     private int senha;
     private int idPaciente;
@@ -37,5 +33,8 @@ public class Funcionario {
     private Date dataNascimento;
 
     private Perfil perfil;
+
     private Especialidade especialidade;
 }
+
+
