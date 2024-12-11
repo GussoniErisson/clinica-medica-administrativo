@@ -1,9 +1,8 @@
 package br.edu.imepac.administrativo.entidades;
 
-<<<<<<< HEAD
 import lombok.*;
-import java.util.Date;
 
+import java.util.Date;
 @Getter
 @Setter
 @ToString
@@ -11,12 +10,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-=======
-import lombok.Data;
-
-import java.util.Date;
 @Data
->>>>>>> origin/servico-matheus
 public class Funcionario {
     private long id;
     private String usuario;
