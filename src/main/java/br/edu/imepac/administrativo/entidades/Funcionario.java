@@ -1,10 +1,17 @@
 package br.edu.imepac.administrativo.entidades;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Date;
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
 public class Funcionario {
+    @id
     private long id;
     private String usuario;
     private int senha;
