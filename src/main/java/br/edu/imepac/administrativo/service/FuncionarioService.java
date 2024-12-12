@@ -24,9 +24,15 @@ public class FuncionarioService {
         return funcionariorepository.save(funcionario);
     }
 
+<<<<<<< HEAD
     public Boolean excluirFuncionario(Long id) {
         funcionariorepository.deleteById(id);
         log.info("Funcionario deletado com sucesso!");
+=======
+    public boolean excluirFuncionario(long id) {
+        funcionariorepository.deleteById(id);
+        System.out.println("Funcionario deletado com sucesso!");
+>>>>>>> origin/resource-luiz
         return true;
     }
 
@@ -45,6 +51,7 @@ public class FuncionarioService {
     public List<Funcionario> listarFuncionario() {
         return funcionariorepository.findAll();
     }
+
 }
 
 
