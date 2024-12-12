@@ -1,5 +1,6 @@
 package br.edu.imepac.administrativo.entidades;
 
+import jakarta.persistence.Id;
 import lombok.*;
 
 import java.util.Date;
@@ -12,6 +13,8 @@ import java.util.Date;
 @Builder
 @Data
 public class Funcionario {
+    @Id
+    
     private long id;
     private String usuario;
     private int senha;
@@ -29,7 +32,6 @@ public class Funcionario {
     private String contato;
     private String email;
     private Date dataNascimento;
-
     private Perfil perfil;
     private Especialidade especialidade;
 }

@@ -27,9 +27,15 @@
             <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
-                <version>1.18.24</version> <!-- Verifique a versão mais recente -->
+                <version>1.18.24</version>
                 <scope>provided</scope>
             </dependency>
+        <dependency>
+            <groupId>org.flywaydb</groupId>
+            <artifactId>flyway-core</artifactId>
+            <version>8.5.10</version>
+        </dependency>
+
 
         <dependency>
             <groupId>org.springframework.boot</groupId>

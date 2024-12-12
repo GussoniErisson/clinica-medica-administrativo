@@ -1,5 +1,4 @@
-package br.edu.imepac.administrativo.dtos;
-
+package br.edu.imepac.administrativo.dtos.Perfil.FuncionarioDTO;
 
 import br.edu.imepac.administrativo.entidades.Especialidade;
 import br.edu.imepac.administrativo.entidades.Perfil;
@@ -14,7 +13,9 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreatedFuncionarioDTO {
+public class FuncionarioDTO {
+
+    private int id;
     private String usuario;
     private int senha;
     private int idPaciente;
