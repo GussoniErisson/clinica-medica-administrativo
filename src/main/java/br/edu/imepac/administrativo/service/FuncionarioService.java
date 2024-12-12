@@ -2,11 +2,10 @@ package br.edu.imepac.administrativo.service;
 
 import br.edu.imepac.administrativo.entidades.Funcionario;
 import br.edu.imepac.administrativo.repositories.FuncionarioRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import lombok.extern.slf4j.Slf4j;
 
-import java.util.Optional;
 import java.util.List;
 
 @Slf4j
@@ -24,15 +23,11 @@ public class FuncionarioService {
         return funcionariorepository.save(funcionario);
     }
 
-<<<<<<< HEAD
+
     public Boolean excluirFuncionario(Long id) {
         funcionariorepository.deleteById(id);
         log.info("Funcionario deletado com sucesso!");
-=======
-    public boolean excluirFuncionario(long id) {
-        funcionariorepository.deleteById(id);
-        System.out.println("Funcionario deletado com sucesso!");
->>>>>>> origin/resource-luiz
+
         return true;
     }
 
