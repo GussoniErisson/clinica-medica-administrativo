@@ -1,20 +1,17 @@
 package br.edu.imepac.administrativo.entidades;
 
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
-
 import java.util.Date;
-@Getter
-@Setter
-@ToString
-@EqualsAndHashCode
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
+
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "funcionarios")
 public class Funcionario {
     @Id
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String usuario;
     private int senha;
@@ -32,6 +29,14 @@ public class Funcionario {
     private String contato;
     private String email;
     private Date dataNascimento;
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "perfil")
     private Perfil perfil;
+
+    @ManyToOne
+    @JoinColumn(name = "especialidade")
     private Especialidade especialidade;
 }
