@@ -22,10 +22,10 @@ public class FuncionarioService {
         return funcionariorepository.save(funcionario);
     }
 
-    public FuncionarioService excluirFuncionario(Funcionario funcionario) {
-        funcionariorepository.delete(funcionario);
+    public boolean excluirFuncionario(long id) {
+        funcionariorepository.deleteById(id);
         System.out.println("Funcionario deletado com sucesso!");
-        return null;
+        return true;
     }
 
     public Funcionario atualizarFuncionario(Long id, Funcionario funcionario) {
@@ -36,13 +36,14 @@ public class FuncionarioService {
         return funcionariorepository.save(funcionario);
     }
 
-    public Optional<Funcionario> listarFuncionario(Long id) {
-        return funcionariorepository.findById(id);
+    public Funcionario listarFuncionario(Long id) {
+        return funcionariorepository.findById(id).get();
     }
 
     public List<Funcionario> listarFuncionario() {
         return funcionariorepository.findAll();
     }
+
 }
 
 
