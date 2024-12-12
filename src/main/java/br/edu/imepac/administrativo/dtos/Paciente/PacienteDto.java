@@ -1,6 +1,6 @@
-package br.edu.imepac.administrativo.entidades;
+package br.edu.imepac.administrativo.dtos.Paciente;
 
-import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,13 +10,9 @@ import java.time.LocalDate;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "paciente")
+@JsonInclude(JsonInclude.Include.NON_NULL)
 
-public class Paciente {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PacienteDto {
 
     private int id;
     private String nome;
