@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.entidades;
+package entidades;
 
 public class Prontuario {
     private int id;
