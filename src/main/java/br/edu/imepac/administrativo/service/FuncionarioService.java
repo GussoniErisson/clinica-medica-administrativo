@@ -4,10 +4,12 @@ import br.edu.imepac.administrativo.entidades.Funcionario;
 import br.edu.imepac.administrativo.repositories.FuncionarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import lombok.extern.slf4j.Slf4j;
 
 import java.util.Optional;
 import java.util.List;
 
+@Slf4j
 @Service
 public class FuncionarioService {
 
@@ -22,10 +24,10 @@ public class FuncionarioService {
         return funcionariorepository.save(funcionario);
     }
 
-    public FuncionarioService excluirFuncionario(Funcionario funcionario) {
-        funcionariorepository.delete(funcionario);
-        System.out.println("Funcionario deletado com sucesso!");
-        return null;
+    public Boolean excluirFuncionario(Long id) {
+        funcionariorepository.deleteById(id);
+        log.info("Funcionario deletado com sucesso!");
+        return true;
     }
 
     public Funcionario atualizarFuncionario(Long id, Funcionario funcionario) {
@@ -36,8 +38,8 @@ public class FuncionarioService {
         return funcionariorepository.save(funcionario);
     }
 
-    public Optional<Funcionario> listarFuncionario(Long id) {
-        return funcionariorepository.findById(id);
+    public Funcionario listarFuncionario(Long id) {
+        return funcionariorepository.findById(id).get();
     }
 
     public List<Funcionario> listarFuncionario() {
