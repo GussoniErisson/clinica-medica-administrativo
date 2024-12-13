@@ -1,21 +1,18 @@
 package br.edu.imepac.administrativo.service;
 
+import br.edu.imepac.administrativo.dtos.Convenio.ConvenioCreateDto;
 import br.edu.imepac.administrativo.dtos.Convenio.ConvenioDto;
-import br.edu.imepac.administrativo.dtos.Especialidade.EspecialidadeDto;
-import br.edu.imepac.administrativo.dtos.Especialidade.EspecialidadeCreateDto;
 import br.edu.imepac.administrativo.entidades.Convenio;
-import br.edu.imepac.administrativo.entidades.Especialidade;
 import br.edu.imepac.administrativo.repositories.ConvenioRepository;
-import br.edu.imepac.administrativo.repositories.EspecialidadeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
+import org.springframework.http.HttpStatus;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
-
-import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class ConvenioService {
@@ -26,30 +23,42 @@ public class ConvenioService {
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<ConvenioDto> listarTodas() {
-        return convenioRepository.findAll()
-                .stream()
+    // Listar todos os convênios
+    public List<ConvenioDto> listarTodos() {
+        return convenioRepository.findAll().stream()
                 .map(convenio -> modelMapper.map(convenio, ConvenioDto.class))
                 .collect(Collectors.toList());
     }
 
-    public Optional<ConvenioDto> buscarPorId(Long id) {
-        List<Convenio> convenio = convenioRepository.findById(id);
-        return convenio.map(e -> modelMapper.map(e, ConvenioDto.class));
+    // Buscar convênio por ID
+    public ConvenioDto buscarPorId(Long id) {
+        Optional<Convenio> convenio = convenioRepository.findById(id);
+        return convenio.map(c -> modelMapper.map(c, ConvenioDto.class))
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Convênio não encontrado com o ID " + id));
     }
 
-    public ConvenioDto salvarOuAtualizar(ConvenioDto convenioDto) {
-        Convenio convenio = modelMapper.map(convenioDto, Convenio.class);
+    // Salvar um novo convênio
+    public ConvenioDto salvar(ConvenioCreateDto convenioCreateDto) {
+        Convenio convenio = modelMapper.map(convenioCreateDto, Convenio.class);
         Convenio salvo = convenioRepository.save(convenio);
-        return modelMapper.map(salvo, EspecialidadeDto.class);
+        return modelMapper.map(salvo, ConvenioDto.class);
     }
 
-    public void removerPorId(Long id) {
-        if (especialidadeRepository.existsById(id)) {
-            especialidadeRepository.deleteById(id);
-        } else {
-            throw new RuntimeException("Especialidade com ID " + id + " não encontrada.");
+    // Atualizar um convênio existente
+    public ConvenioDto atualizar(Long id, ConvenioCreateDto convenioCreateDto) {
+        Convenio convenioExistente = convenioRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Convênio não encontrado com o ID " + id));
+
+        modelMapper.map(convenioCreateDto, convenioExistente);
+        Convenio atualizado = convenioRepository.save(convenioExistente);
+        return modelMapper.map(atualizado, ConvenioDto.class);
+    }
+
+    // Remover um convênio por ID
+    public void remover(Long id) {
+        if (!convenioRepository.existsById(id)) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Convênio não encontrado com o ID " + id);
         }
+        convenioRepository.deleteById(id);
     }
-
 }
