@@ -11,6 +11,7 @@ public class consulta {
 
 
     private long id;
+
     private LocalDateTime dataHorario;
 
     private String sintomas;
