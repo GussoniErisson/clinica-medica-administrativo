@@ -1,8 +1,11 @@
 package br.edu.imepac.administrativo.service;
 
+import br.edu.imepac.administrativo.dtos.Convenio.ConvenioDto;
 import br.edu.imepac.administrativo.dtos.Especialidade.EspecialidadeDto;
 import br.edu.imepac.administrativo.dtos.Especialidade.EspecialidadeCreateDto;
+import br.edu.imepac.administrativo.entidades.Convenio;
 import br.edu.imepac.administrativo.entidades.Especialidade;
+import br.edu.imepac.administrativo.repositories.ConvenioRepository;
 import br.edu.imepac.administrativo.repositories.EspecialidadeRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,29 +18,29 @@ import java.util.stream.Collectors;
 import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
-public class EspecialidadeService {
+public class ConvenioService {
 
     @Autowired
-    private EspecialidadeRepository especialidadeRepository;
+    private ConvenioRepository convenioRepository;
 
     @Autowired
     private ModelMapper modelMapper;
 
-    public List<EspecialidadeDto> listarTodas() {
-        return especialidadeRepository.findAll()
+    public List<ConvenioDto> listarTodas() {
+        return convenioRepository.findAll()
                 .stream()
-                .map(especialidade -> modelMapper.map(especialidade, EspecialidadeDto.class))
+                .map(convenio -> modelMapper.map(convenio, ConvenioDto.class))
                 .collect(Collectors.toList());
     }
 
-    public Optional<EspecialidadeDto> buscarPorId(Long id) {
-        Optional<Especialidade> especialidade = especialidadeRepository.findById(id);
-        return especialidade.map(e -> modelMapper.map(e, EspecialidadeDto.class));
+    public Optional<ConvenioDto> buscarPorId(Long id) {
+        List<Convenio> convenio = convenioRepository.findById(id);
+        return convenio.map(e -> modelMapper.map(e, ConvenioDto.class));
     }
 
-    public EspecialidadeDto salvarOuAtualizar(EspecialidadeDto especialidadeDto) {
-        Especialidade especialidade = modelMapper.map(especialidadeDto, Especialidade.class);
-        Especialidade salvo = especialidadeRepository.save(especialidade);
+    public ConvenioDto salvarOuAtualizar(ConvenioDto convenioDto) {
+        Convenio convenio = modelMapper.map(convenioDto, Convenio.class);
+        Convenio salvo = convenioRepository.save(convenio);
         return modelMapper.map(salvo, EspecialidadeDto.class);
     }
 
