@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.dtos.Perfil.FuncionarioDTO;
+package br.edu.imepac.administrativo.dtos.FuncionarioDTO;
 
 
 import br.edu.imepac.administrativo.entidades.Especialidade;
