@@ -11,7 +11,7 @@ public class EspecialidadeApplication {
     public static void main(String[] args) {
         SpringApplication.run(EspecialidadeApplication.class, args);
     }
-    @Bean
+    @Bean(name = "modelMapperEspecialidade")
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setSkipNullEnabled(true);

@@ -7,13 +7,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class AdministrativoApplication {
+public class PacienteApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(AdministrativoApplication.class, args);
+        SpringApplication.run(PacienteApplication.class, args);
     }
 
-    @Bean
+    @Bean(name = "modelMapperPaciente")
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setSkipNullEnabled(true);

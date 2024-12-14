@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.controller.dtos.Perfil;
+package br.edu.imepac.administrativo.dtos.Perfil;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

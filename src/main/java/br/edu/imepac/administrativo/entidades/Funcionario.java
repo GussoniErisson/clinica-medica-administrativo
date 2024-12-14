@@ -1,4 +1,4 @@
-package entidades;
+package br.edu.imepac.administrativo.entidades;
 
 import lombok.*;
 import java.util.Date;

@@ -12,7 +12,8 @@ public interface PacienteRepository extends JpaRepository<Paciente,Long> {
 
     Optional<Paciente> findById (Long id);
 
+    Optional<Paciente> findById();
+
     void deleteById(Long id);
 
-    Optional<Paciente> findById();
 }
