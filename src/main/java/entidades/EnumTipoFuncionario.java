@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.entidades;
+package entidades;
 
 public enum EnumTipoFuncionario {
     MEDICO, ATENDENTE, OUTROS;

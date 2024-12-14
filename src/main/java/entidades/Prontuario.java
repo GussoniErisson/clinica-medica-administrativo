@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.entidades;
+package entidades;
 
 import jakarta.persistence.*;
 import lombok.Data;

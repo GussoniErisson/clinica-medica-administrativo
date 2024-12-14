@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.entidades;
+package entidades;
 
 import lombok.*;
 import java.time.LocalDateTime;
