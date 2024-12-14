@@ -67,4 +67,5 @@ public class PerfilService {
         Optional<Perfil> optionalPerfil = perfilRepository.findById(id);
         return optionalPerfil.map(usuario -> modelMapper.map(usuario, PerfilDto.class)).orElse(null);
     }
+    
 }
