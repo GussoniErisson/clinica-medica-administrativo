@@ -1,18 +1,17 @@
 package br.edu.imepac.administrativo.service;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-
-import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import br.edu.imepac.administrativo.dtos.Perfil.PerfilCreateDto;
 import br.edu.imepac.administrativo.dtos.Perfil.PerfilDto;
 import br.edu.imepac.administrativo.entidades.Perfil;
 import br.edu.imepac.administrativo.exceptions.PerfilException;
 import br.edu.imepac.administrativo.repositories.PerfilRepository;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PerfilService {
@@ -51,7 +50,7 @@ public class PerfilService {
     }
 
     public PerfilCreateDto getPerfilById(Long id) {
-       
+
         Perfil perfil = perfilRepository.findById(id)
                 .orElseThrow(() -> new PerfilException("Perfil não encontrado com id: " + id));
         return modelMapper.map(perfil, PerfilCreateDto.class);
@@ -67,5 +66,5 @@ public class PerfilService {
         Optional<Perfil> optionalPerfil = perfilRepository.findById(id);
         return optionalPerfil.map(usuario -> modelMapper.map(usuario, PerfilDto.class)).orElse(null);
     }
-    
+
 }

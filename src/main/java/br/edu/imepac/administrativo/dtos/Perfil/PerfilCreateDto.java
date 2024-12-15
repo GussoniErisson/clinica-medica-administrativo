@@ -1,22 +1,14 @@
-package entidades;
-
+package br.edu.imepac.administrativo.dtos.Perfil;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-
 import lombok.NoArgsConstructor;
-
-
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+public class PerfilCreateDto {
 
-
-public class Perfil {
-
-
-    private int id;
     private String nome;
     private boolean cadastrarFuncionario;
     private boolean lerFuncionario;
@@ -43,5 +35,4 @@ public class Perfil {
     private boolean atualizarConvenio;
     private boolean deletarConvenio;
     private boolean listarConvenio;
-
 }

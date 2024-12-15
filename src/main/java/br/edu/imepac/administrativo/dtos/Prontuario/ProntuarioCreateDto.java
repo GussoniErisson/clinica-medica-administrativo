@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.controller.dtos.Prontuario;
+package br.edu.imepac.administrativo.dtos.Prontuario;
 
 
 import com.fasterxml.jackson.annotation.JsonInclude;

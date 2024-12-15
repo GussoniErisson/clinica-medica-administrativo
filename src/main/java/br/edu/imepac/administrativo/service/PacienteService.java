@@ -1,7 +1,7 @@
 package br.edu.imepac.administrativo.service;
 
-import br.edu.imepac.administrativo.controller.dtos.Paciente.PacienteCreateDto;
-import br.edu.imepac.administrativo.controller.dtos.Paciente.PacienteDto;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteCreateDto;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteDto;
 import br.edu.imepac.administrativo.entidades.Paciente;
 import br.edu.imepac.administrativo.repositories.PacienteRepository;
 import org.modelmapper.ModelMapper;
@@ -37,7 +37,7 @@ public class PacienteService {
     }
 
     public PacienteDto update(Long id, PacienteDto pacienteDetails) {
-        Optional<Paciente> optionalPaciente = pacienteRepository.findById();
+        Optional<Paciente> optionalPaciente = pacienteRepository.findById(id);
 
         if (optionalPaciente.isPresent()) {
             Paciente paciente = optionalPaciente.get();

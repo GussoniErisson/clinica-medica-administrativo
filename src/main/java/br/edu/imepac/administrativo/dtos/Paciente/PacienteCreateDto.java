@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.controller.dtos.Paciente;
+package br.edu.imepac.administrativo.dtos.Paciente;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -12,9 +12,8 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
-public class PacienteDto {
+public class PacienteCreateDto {
 
-    private int id;
     private String nome;
     private int idade;
     private char sexo;

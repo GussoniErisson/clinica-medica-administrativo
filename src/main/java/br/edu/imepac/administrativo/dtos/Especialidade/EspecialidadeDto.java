@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.controller.dtos.Especialidade;
+package br.edu.imepac.administrativo.dtos.Especialidade;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;

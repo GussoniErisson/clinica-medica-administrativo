@@ -1,7 +1,8 @@
-package br.edu.imepac.administrativo.controller;
+package br.edu.imepac.administrativo.resources;
 
-import br.edu.imepac.dtos.PacienteDto;
-import br.edu.imepac.services.PacienteService;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteCreateDto;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteDto;
+import br.edu.imepac.administrativo.service.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,18 +12,18 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/paciente")
-public class PacienteController {
+public class PacienteResource {
 
     private PacienteService pacienteService;
 
     @Autowired
-    public PacienteController(PacienteService pacienteService) {
+    public PacienteResource(PacienteService pacienteService) {
         this.pacienteService = pacienteService;
     }
 
     @PostMapping
-    public ResponseEntity<PacienteDto> savePaciente(@RequestBody PacienteCreateRequest pacienteCreateRequest) {
-        PacienteDto savedPaciente = pacienteService.save(pacienteCreateRequest);
+    public ResponseEntity<PacienteDto> savePaciente(@RequestBody PacienteCreateDto pacienteCreateDto) {
+        PacienteDto savedPaciente = pacienteService.save(pacienteCreateDto);
         return new ResponseEntity<>(savedPaciente, HttpStatus.CREATED);
     }
 
