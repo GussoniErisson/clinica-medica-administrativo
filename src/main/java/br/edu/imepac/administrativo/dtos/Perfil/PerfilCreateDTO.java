@@ -1,6 +1,5 @@
-package br.edu.imepac.administrativo.entidades;
+package br.edu.imepac.administrativo.dtos.Perfil;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,12 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "perfis")
-public class Perfil {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class PerfilCreateDTO {
 
     private String nome;
     private boolean cadastrarFuncionario;
@@ -31,7 +25,7 @@ public class Perfil {
     private boolean atualizarFormulario;
     private boolean deletarFormulario;
     private boolean listarFormulario;
-    private boolean cadastrarEspecialidade;
+    private boolean cadastrarFspecialidade;
     private boolean lerEspecialidade;
     private boolean atualizarEspecialidade;
     private boolean deletarEspecialidade;
