@@ -18,7 +18,6 @@ public class Funcionario {
     private long id;
     private String usuario;
     private int senha;
-    private int idPaciente;
     private String nome;
     private int idade;
     private String sexo;
