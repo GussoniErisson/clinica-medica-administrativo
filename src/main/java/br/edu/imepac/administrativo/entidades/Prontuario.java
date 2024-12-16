@@ -1,15 +1,15 @@
 package br.edu.imepac.administrativo.entidades;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "prontuario")
+@Table(name = "prontuarios")
 public class Prontuario {
 
     @Id
@@ -18,10 +18,8 @@ public class Prontuario {
 
     @Column(name = "receituario", nullable = false)
     private String receituario;
-
     @Column(name = "exames")
     private String exames;
-
     @Column(name = "observacoes")
     private String observacoes;
 }

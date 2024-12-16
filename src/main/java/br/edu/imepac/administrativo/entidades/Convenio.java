@@ -16,8 +16,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
-
 public class Convenio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -6,7 +6,7 @@ CREATE TABLE Convenio
     api_key   VARCHAR(255)
 );
 
-CREATE TABLE Especialidade
+CREATE TABLE Especialidades
 (
     id        BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome      VARCHAR(100) NOT NULL UNIQUE,

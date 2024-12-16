@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
+
 @Configuration
 @Slf4j
 @RestController
@@ -71,7 +72,8 @@ public class EspecialidadeResource {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public EspecialidadeDto salvar(
-            @Parameter(description = "Dados da especialidade a ser criada", required = true) @RequestBody EspecialidadeCreateDto especialidadeCreateDto) {
+            @Parameter(description = "Dados da especialidade a ser criada", required = true) @RequestBody EspecialidadeCreateDto especialidadeCreateDto
+    ) {
         logger.info("Salvando nova especialidade: {}", especialidadeCreateDto.getNome());
         if (especialidadeCreateDto.getNome() == null || especialidadeCreateDto.getNome().isEmpty()) {
             logger.warn("Nome da especialidade não fornecido");
