@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PerfilDto {
+public class PerfilDTO {
 
     private String nome;
     private boolean cadastrarFuncionario;

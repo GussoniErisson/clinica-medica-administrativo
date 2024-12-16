@@ -1,4 +1,4 @@
-CREATE TABLE Especialidades
+CREATE TABLE especialidades
 (
     id        BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome      VARCHAR(100) NOT NULL UNIQUE,

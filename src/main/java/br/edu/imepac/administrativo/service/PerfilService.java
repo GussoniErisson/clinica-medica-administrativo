@@ -1,23 +1,25 @@
 package br.edu.imepac.administrativo.service;
 
-import br.edu.imepac.administrativo.dtos.Perfil.PerfilCreateDto;
-import br.edu.imepac.administrativo.dtos.Perfil.PerfilDto;
+import br.edu.imepac.administrativo.dtos.Perfil.PerfilCreateDTO;
+import br.edu.imepac.administrativo.dtos.Perfil.PerfilDTO;
+import br.edu.imepac.administrativo.dtos.Perfil.PerfilUpdateDTO;
 import br.edu.imepac.administrativo.entidades.Perfil;
-import br.edu.imepac.administrativo.exceptions.PerfilException;
 import br.edu.imepac.administrativo.repositories.PerfilRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class PerfilService {
 
-    private PerfilRepository perfilRepository;
-    private ModelMapper modelMapper;
+    private final PerfilRepository perfilRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public PerfilService(PerfilRepository perfilRepository, ModelMapper modelMapper) {
@@ -25,46 +27,35 @@ public class PerfilService {
         this.modelMapper = modelMapper;
     }
 
+    public PerfilDTO save(PerfilCreateDTO perfilCreateDTO) {
+        Perfil perfil = modelMapper.map(perfilCreateDTO, Perfil.class);
+        perfil = perfilRepository.save(perfil);
+        return modelMapper.map(perfil, PerfilDTO.class);
+    }
+
     public void delete(Long id) {
-        perfilRepository.deleteById(id);
-    }
-
-    public List<PerfilDto> findAll() {
-        List<Perfil> perfil = perfilRepository.findAll();
-        return perfil.stream()
-                .map(usuario -> modelMapper.map(usuario, PerfilDto.class))
-                .collect(Collectors.toList());
-    }
-
-    public PerfilDto update(Long id, PerfilDto perfilDetails) {
-        Optional<Perfil> optionalPerfil = perfilRepository.findById(id);
-
-        if (optionalPerfil.isPresent()) {
-            Perfil perfil = optionalPerfil.get();
-            perfil.setNome(perfilDetails.getNome());
-            Perfil updatedPerfil = perfilRepository.save(perfil);
-            return modelMapper.map(updatedPerfil, PerfilDto.class);
-        } else {
-            return null;
-        }
-    }
-
-    public PerfilCreateDto getPerfilById(Long id) {
-
         Perfil perfil = perfilRepository.findById(id)
-                .orElseThrow(() -> new PerfilException("Perfil não encontrado com id: " + id));
-        return modelMapper.map(perfil, PerfilCreateDto.class);
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Perfil não encontrado!"));
+        perfilRepository.delete(perfil);
+        log.info("Perfil deletado com sucesso!");
     }
 
-    public PerfilDto save(PerfilCreateDto perfilRequest) {
-        Perfil perfil = modelMapper.map(perfilRequest, Perfil.class);
-        Perfil savedUsuario = perfilRepository.save(perfil);
-        return modelMapper.map(savedUsuario, PerfilDto.class);
+    public List<PerfilDTO> findAll() {
+        List<Perfil> perfis = perfilRepository.findAll();
+        return modelMapper.map(perfis, List.class);
     }
 
-    public PerfilDto findById(Long id) {
-        Optional<Perfil> optionalPerfil = perfilRepository.findById(id);
-        return optionalPerfil.map(usuario -> modelMapper.map(usuario, PerfilDto.class)).orElse(null);
+    public PerfilDTO update(Long id, PerfilUpdateDTO perfilUpdateDTO) {
+        Perfil perfil = perfilRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Perfil não encontrado!"));
+        modelMapper.map(perfilUpdateDTO, perfil);
+        perfil = perfilRepository.save(perfil);
+        return modelMapper.map(perfil, PerfilDTO.class);
     }
 
+    public PerfilDTO findById(Long id) {
+        Perfil perfil = perfilRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Perfil não encontrado!"));
+        return modelMapper.map(perfil, PerfilDTO.class);
+    }
 }

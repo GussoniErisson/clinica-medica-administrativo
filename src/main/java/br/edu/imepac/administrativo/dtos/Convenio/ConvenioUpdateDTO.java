@@ -1,4 +1,5 @@
-package br.edu.imepac.administrativo.dtos.Especialidade;
+package br.edu.imepac.administrativo.dtos.Convenio;
+
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -7,12 +8,11 @@ import lombok.NoArgsConstructor;
 
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EspecialidadeCreateDTO {
+public class ConvenioUpdateDTO {
 
     private String nome;
     private String descricao;
 }
-

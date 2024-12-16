@@ -1,23 +1,25 @@
 package br.edu.imepac.administrativo.service;
 
-import br.edu.imepac.administrativo.dtos.Paciente.PacienteCreateDto;
-import br.edu.imepac.administrativo.dtos.Paciente.PacienteDto;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteCreateDTO;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteDTO;
+import br.edu.imepac.administrativo.dtos.Paciente.PacienteUpdateDTO;
 import br.edu.imepac.administrativo.entidades.Paciente;
 import br.edu.imepac.administrativo.repositories.PacienteRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
-
+@Slf4j
 @Service
 public class PacienteService {
 
-    private PacienteRepository pacienteRepository;
-    private ModelMapper modelMapper;
+    private final PacienteRepository pacienteRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public PacienteService(PacienteRepository pacienteRepository, ModelMapper modelMapper) {
@@ -25,51 +27,35 @@ public class PacienteService {
         this.modelMapper = modelMapper;
     }
 
-    public void delete(Long id) {
-        pacienteRepository.deleteById(id);
-    }
-
-    public List<PacienteDto> findAll() {
-        List<Paciente> pacientes = pacienteRepository.findAll();
-        return pacientes.stream()
-                .map(paciente -> modelMapper.map(paciente, PacienteDto.class))
-                .collect(Collectors.toList());
-    }
-
-    public PacienteDto update(Long id, PacienteDto pacienteDetails) {
-        Optional<Paciente> optionalPaciente = pacienteRepository.findById(id);
-
-        if (optionalPaciente.isPresent()) {
-            Paciente paciente = optionalPaciente.get();
-            paciente.setNome(pacienteDetails.getNome());
-            paciente.setBairro(pacienteDetails.getBairro());
-            paciente.setCidade(pacienteDetails.getCidade());
-            paciente.setComplemento(pacienteDetails.getComplemento());
-            paciente.setContato(pacienteDetails.getContato());
-            paciente.setCpf(pacienteDetails.getCpf());
-            paciente.setDataNascimento(pacienteDetails.getDataNascimento());
-            paciente.setIdade(pacienteDetails.getIdade());
-            paciente.setSexo(pacienteDetails.getSexo());
-            paciente.setRua(pacienteDetails.getRua());
-            paciente.setNumero(pacienteDetails.getNumero());
-            paciente.setEstado(pacienteDetails.getEstado());
-            paciente.setEmail(pacienteDetails.getEmail());
-
-            Paciente updatedPaciente = pacienteRepository.save(paciente);
-            return modelMapper.map(updatedPaciente, PacienteDto.class);
-        } else {
-            return null;
-        }
-    }
-
-    public PacienteDto save(PacienteCreateDto pacienteCreateDto) {
+    public PacienteDTO save(PacienteCreateDTO pacienteCreateDto) {
         Paciente paciente = modelMapper.map(pacienteCreateDto, Paciente.class);
-        Paciente savedPaciente = pacienteRepository.save(paciente);
-        return modelMapper.map(savedPaciente, PacienteDto.class);
+        paciente = pacienteRepository.save(paciente);
+        return modelMapper.map(paciente, PacienteDTO.class);
     }
 
-    public PacienteDto findById(Long id) {
-        Optional<Paciente> optionalPaciente = pacienteRepository.findById(id);
-        return optionalPaciente.map(paciente -> modelMapper.map(paciente, PacienteDto.class)).orElse(null);
+    public void delete(Long id) {
+        Paciente paciente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
+        pacienteRepository.delete(paciente);
+        log.info("Paciente deletado com sucesso!");
+    }
+
+    public PacienteDTO update(Long id, PacienteUpdateDTO pacienteUpdateDto) {
+        Paciente paciente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
+        modelMapper.map(pacienteUpdateDto, paciente);
+        paciente = pacienteRepository.save(paciente);
+        return modelMapper.map(paciente, PacienteDTO.class);
+    }
+
+    public PacienteDTO findById(Long id) {
+        Paciente paciente = pacienteRepository.findById(id)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Paciente não encontrado!"));
+        return modelMapper.map(paciente, PacienteDTO.class);
+    }
+
+    public List<PacienteDTO> findAll() {
+        List<Paciente> pacientes = pacienteRepository.findAll();
+        return modelMapper.map(pacientes, List.class);
     }
 }

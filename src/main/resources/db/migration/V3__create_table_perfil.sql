@@ -1,6 +1,6 @@
 CREATE TABLE perfis
 (
-    id                      INT PRIMARY KEY AUTO_INCREMENT,
+    id                      BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome                    VARCHAR(255) NOT NULL,
     cadastrar_funcionario   BOOLEAN      NOT NULL,
     ler_funcionario         BOOLEAN      NOT NULL,

@@ -1,4 +1,4 @@
-package br.edu.imepac.administrativo.dtos.FuncionarioDTO;
+package br.edu.imepac.administrativo.dtos.Funcionario;
 
 
 import br.edu.imepac.administrativo.entidades.EnumTipoFuncionario;

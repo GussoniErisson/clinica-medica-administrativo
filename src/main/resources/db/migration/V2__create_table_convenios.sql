@@ -1,4 +1,4 @@
-CREATE TABLE Convenios
+CREATE TABLE convenios
 (
     id        BIGINT AUTO_INCREMENT PRIMARY KEY,
     nome      VARCHAR(100) NOT NULL UNIQUE,

@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class PerfilCreateDTO {
+public class PerfilUpdateDTO {
 
     private String nome;
     private boolean cadastrarFuncionario;

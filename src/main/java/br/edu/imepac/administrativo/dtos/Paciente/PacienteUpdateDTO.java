@@ -12,7 +12,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 
-public class PacienteCreateDTO {
+public class PacienteUpdateDTO {
 
     private String nome;
     private int idade;
