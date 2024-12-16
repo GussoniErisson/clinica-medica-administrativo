@@ -1,8 +1,8 @@
 package br.edu.imepac.administrativo.service;
 
-import br.edu.imepac.administrativo.dtos.FuncionarioDTO.FuncionarioCreateDTO;
-import br.edu.imepac.administrativo.dtos.FuncionarioDTO.FuncionarioDTO;
-import br.edu.imepac.administrativo.dtos.FuncionarioDTO.FuncionarioUpdateDTO;
+import br.edu.imepac.administrativo.dtos.Funcionario.FuncionarioCreateDTO;
+import br.edu.imepac.administrativo.dtos.Funcionario.FuncionarioDTO;
+import br.edu.imepac.administrativo.dtos.Funcionario.FuncionarioUpdateDTO;
 import br.edu.imepac.administrativo.entidades.Funcionario;
 import br.edu.imepac.administrativo.repositories.FuncionarioRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -53,8 +53,9 @@ public class FuncionarioService {
         return modelMapper.map(funcionario, FuncionarioDTO.class);
     }
 
-    public List<Funcionario> listarFuncionario() {
-        return funcionariorepository.findAll();
+    public List<FuncionarioDTO> listarFuncionario() {
+        List<Funcionario> funcionarios = funcionariorepository.findAll();
+        return modelMapper.map(funcionarios, List.class);
     }
 
 }
