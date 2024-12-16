@@ -32,6 +32,9 @@ public class Funcionario {
     private String email;
     private Date dataNascimento;
 
+    @Enumerated(EnumType.STRING)
+    private EnumTipoFuncionario tipoFuncionario;
+
 
     @OneToOne
     private Perfil perfil;
