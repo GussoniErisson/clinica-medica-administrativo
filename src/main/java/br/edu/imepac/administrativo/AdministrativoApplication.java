@@ -1,15 +1,16 @@
 package br.edu.imepac.administrativo;
 
+
 import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
-public class ClinicaMedicaAdministrativoApplication {
+public class AdministrativoApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ClinicaMedicaAdministrativoApplication.class, args);
+        SpringApplication.run(AdministrativoApplication.class, args);
     }
 
     @Bean
@@ -18,5 +19,4 @@ public class ClinicaMedicaAdministrativoApplication {
         modelMapper.getConfiguration().setSkipNullEnabled(true);
         return modelMapper;
     }
-
 }

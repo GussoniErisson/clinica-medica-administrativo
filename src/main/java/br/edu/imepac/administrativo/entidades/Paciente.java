@@ -5,38 +5,29 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "funcionarios")
-public class Funcionario {
+@Table(name = "pacientes")
+public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private String usuario;
-    private int senha;
-    private int idPaciente;
+    private int id;
     private String nome;
     private int idade;
-    private String sexo;
+    private char sexo;
     private String cpf;
     private String rua;
-    private int numero;
+    private String numero;
     private String complemento;
     private String bairro;
     private String cidade;
     private String estado;
     private String contato;
     private String email;
-    private Date dataNascimento;
+    private LocalDate dataNascimento;
 
-
-    @OneToOne
-    private Perfil perfil;
-
-    @OneToOne
-    private Especialidade especialidade;
 }

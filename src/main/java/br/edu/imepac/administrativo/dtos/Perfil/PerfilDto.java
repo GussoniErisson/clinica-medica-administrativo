@@ -1,21 +1,13 @@
-package br.edu.imepac.administrativo.entidades;
+package br.edu.imepac.administrativo.dtos.Perfil;
 
-
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "perfis")
-public class Perfil {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class PerfilDto {
 
     private String nome;
     private boolean cadastrarFuncionario;
@@ -43,5 +35,4 @@ public class Perfil {
     private boolean atualizarConvenio;
     private boolean deletarConvenio;
     private boolean listarConvenio;
-
 }
