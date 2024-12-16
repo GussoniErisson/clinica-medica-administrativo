@@ -30,15 +30,18 @@ public class Funcionario {
     private String estado;
     private String contato;
     private String email;
+
+    @Column(name = "data_nascimento")
     private Date dataNascimento;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "tipo_funcionario")
     private EnumTipoFuncionario tipoFuncionario;
 
 
-    @OneToOne
+    @ManyToOne
     private Perfil perfil;
 
-    @OneToOne
+    @ManyToOne
     private Especialidade especialidade;
 }

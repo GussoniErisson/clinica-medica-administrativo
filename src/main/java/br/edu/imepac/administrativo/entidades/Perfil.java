@@ -1,11 +1,9 @@
 package br.edu.imepac.administrativo.entidades;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 
 @Data
 @AllArgsConstructor
@@ -33,7 +31,7 @@ public class Perfil {
     private boolean atualizarFormulario;
     private boolean deletarFormulario;
     private boolean listarFormulario;
-    private boolean cadastrarFspecialidade;
+    private boolean cadastrarEspecialidade;
     private boolean lerEspecialidade;
     private boolean atualizarEspecialidade;
     private boolean deletarEspecialidade;
@@ -43,5 +41,4 @@ public class Perfil {
     private boolean atualizarConvenio;
     private boolean deletarConvenio;
     private boolean listarConvenio;
-
 }

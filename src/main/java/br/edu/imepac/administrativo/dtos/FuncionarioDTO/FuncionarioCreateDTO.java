@@ -1,6 +1,7 @@
 package br.edu.imepac.administrativo.dtos.FuncionarioDTO;
 
 
+import br.edu.imepac.administrativo.entidades.EnumTipoFuncionario;
 import br.edu.imepac.administrativo.entidades.Especialidade;
 import br.edu.imepac.administrativo.entidades.Perfil;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -14,7 +15,7 @@ import java.sql.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CreatedFuncionarioDTO {
+public class FuncionarioCreateDTO {
     private String usuario;
     private int senha;
     private String nome;
@@ -30,6 +31,7 @@ public class CreatedFuncionarioDTO {
     private String contato;
     private String email;
     private Date dataNascimento;
+    private EnumTipoFuncionario tipoFuncionario;
 
     private Perfil perfil;
 
