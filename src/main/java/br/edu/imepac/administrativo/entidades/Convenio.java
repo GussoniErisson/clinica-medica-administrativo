@@ -2,12 +2,9 @@ package br.edu.imepac.administrativo.entidades;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
-import java.util.List;
-import lombok.*;
-
 
 
 @Entity
@@ -26,8 +23,4 @@ public class Convenio {
 
     @Column(nullable = true, length = 200)
     private String descricao;
-
-    @Column(name = "api_key")
-    private String apiKey;
-
 }

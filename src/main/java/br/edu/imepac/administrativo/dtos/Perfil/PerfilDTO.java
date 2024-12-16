@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PerfilDTO {
-
+    private Long id;
     private String nome;
     private boolean cadastrarFuncionario;
     private boolean lerFuncionario;
