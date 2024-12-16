@@ -1,4 +1,4 @@
-CREATE TABLE perfis
+CREATE TABLE IF NOT EXISTS perfis
 (
     id                      BIGINT PRIMARY KEY AUTO_INCREMENT,
     nome                    VARCHAR(255) NOT NULL,

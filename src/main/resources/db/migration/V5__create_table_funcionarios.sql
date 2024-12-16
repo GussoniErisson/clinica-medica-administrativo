@@ -1,4 +1,4 @@
-CREATE TABLE funcionarios
+CREATE TABLE IF NOT EXISTS funcionarios
 (
     id               BIGINT PRIMARY KEY AUTO_INCREMENT,
     usuario          VARCHAR(50)        NOT NULL,
