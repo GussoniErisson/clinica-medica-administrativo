@@ -4,9 +4,9 @@ import br.edu.imepac.administrativo.dtos.Perfil.PerfilCreateDTO;
 import br.edu.imepac.administrativo.dtos.Perfil.PerfilDTO;
 import br.edu.imepac.administrativo.dtos.Perfil.PerfilUpdateDTO;
 import br.edu.imepac.administrativo.service.PerfilService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import lombok.Data;
 
 import java.util.List;
 
@@ -14,9 +14,8 @@ import java.util.List;
 @RequestMapping("/perfil")
 public class PerfilResource {
 
-    private PerfilService perfilService;
+    private final PerfilService perfilService;
 
-    @Autowired
     public PerfilResource(PerfilService perfilService) {
         this.perfilService = perfilService;
     }
@@ -32,19 +31,39 @@ public class PerfilResource {
         return perfilService.findAll();
     }
 
-    @GetMapping("/{id}")
-    public PerfilDTO getPerfilById(@PathVariable Long id) {
-        return perfilService.findById(id);
-    }
-
-    @PutMapping("/{id}")
-    public PerfilDTO updatePerfil(@PathVariable Long id, @RequestBody PerfilUpdateDTO perfilDetails) {
-        return perfilService.update(id, perfilDetails);
-    }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deletePerfil(@PathVariable Long id) {
         perfilService.delete(id);
+    }
+
+    @Data
+    public static class Perfil {
+        private String nome;
+        private boolean cadastrarFuncionario;
+        private boolean lerFuncionario;
+        private boolean atualizarFuncionario;
+        private boolean deletarFuncionario;
+        private boolean listarFuncionario;
+        private boolean cadastrarPaciente;
+        private boolean lerPaciente;
+        private boolean atualizarPaciente;
+        private boolean deletarPaciente;
+        private boolean listarPaciente;
+        private boolean cadastrarFormulario;
+        private boolean lerFormulario;
+        private boolean atualizarFormulario;
+        private boolean deletarFormulario;
+        private boolean listarFormulario;
+        private boolean cadastrarEspecialidade;
+        private boolean lerEspecialidade;
+        private boolean atualizarEspecialidade;
+        private boolean deletarEspecialidade;
+        private boolean listarEspecialidade;
+        private boolean cadastrarConvenio;
+        private boolean lerConvenio;
+        private boolean atualizarConvenio;
+        private boolean deletarConvenio;
+        private boolean listarConvenio;
     }
 }
